@@ -4,6 +4,10 @@ module.exports = function(sequelize, DataTypes) {
       type: DataTypes.STRING,
       allowNull: false
     },
+    type: {
+      type: DataTypes.STRING,
+      allowNull: false
+    },
     ABV: {
       type: DataTypes.FLOAT(3,1),
       allowNull: false
@@ -16,7 +20,7 @@ module.exports = function(sequelize, DataTypes) {
       type: DataTypes.STRING,
       allowNull: false
     },
-    flavor: {
+    profile: {
       type: DataTypes.STRING,
       allowNull: false
     },
@@ -25,4 +29,39 @@ module.exports = function(sequelize, DataTypes) {
     }
   });
   return beer;
+};
+
+beer.associate = function(models) {
+
+  beer.belongsTo(models.country, {
+    as: "country",
+    foreignKey: {
+      name: "id",
+      allowNull: true
+    }
+  });
+
+  beer.belongsTo(models.type, {
+    as: "type",
+    foreignKey: {
+      name: "id",
+      allowNull: true
+    }
+  });
+
+  beer.belongsTo(models.brewery, {
+    as: "brewery",
+    foreignKey: {
+      name: "id",
+      allowNull: true
+    }
+  });
+
+  beer.belongsTo(models.profile, {
+    as: "profile",
+    foreignKey: {
+      name: "id",
+      allowNull: true
+    }
+  });
 };
