@@ -1,10 +1,10 @@
 module.exports = function(sequelize, DataTypes) {
     var rating = sequelize.define("rating", {
-      beer_id: {
+      beer: {
         type: DataTypes.INTEGER,
         allowNull: false
       },
-      user_id: {
+      user: {
         type: DataTypes.INTEGER,
         allowNull: false
       },
@@ -15,3 +15,23 @@ module.exports = function(sequelize, DataTypes) {
     });
     return rating;
   };
+
+beer.associate = function(models) {
+    
+    rating.belongsTo(models.beer, {
+        as: "beer",
+        foreignKey: {
+            name: "id",
+            allowNull: false
+      }
+    });
+
+    rating.belongsTo(models.user, {
+        as: "user",
+        foreignKey: {
+            name: "id",
+            allowNull: false
+        }
+    })
+
+  }
