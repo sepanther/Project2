@@ -1,9 +1,9 @@
 module.exports = function(sequelize, DataTypes) {
-    var style = sequelize.define("style", {
+    var Style = sequelize.define("Style", {
       style: {
         type: DataTypes.STRING,
         allowNull: false
       }
     });
-    return style;
+    return Style;
   };

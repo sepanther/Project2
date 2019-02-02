@@ -1,9 +1,9 @@
 module.exports = function(sequelize, DataTypes) {
-    var type = sequelize.define("type", {
+    var Type = sequelize.define("Type", {
       type: {
         type: DataTypes.STRING,
         allowNull: false
       }
     });
-    return type;
+    return Type;
   };

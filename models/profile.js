@@ -1,9 +1,9 @@
 module.exports = function(sequelize, DataTypes) {
-    var profile = sequelize.define("profile", {
+    var Profile = sequelize.define("Profile", {
       profile: {
         type: DataTypes.STRING,
         allowNull: false
       }
     });
-    return profile;
+    return Profile;
   };
