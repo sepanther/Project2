@@ -1,9 +1,9 @@
 module.exports = function(sequelize, DataTypes) {
-    var country = sequelize.define("country", {
+    var Country = sequelize.define("Country", {
       country: {
         type: DataTypes.STRING,
         allowNull: false
       }
     });
-    return country;
+    return Country;
   };

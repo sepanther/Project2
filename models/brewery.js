@@ -1,5 +1,5 @@
 module.exports = function(sequelize, DataTypes) {
-    var brewery = sequelize.define("brewery", {
+    var Brewery = sequelize.define("Brewery", {
       name: {
         type: DataTypes.STRING,
         allowNull: false
@@ -29,16 +29,16 @@ module.exports = function(sequelize, DataTypes) {
         allowNull: true
       }
     });
-    return brewery;
-  };
+    
 
-  brewery.associate = function(models) {
+  Brewery.associate = function(models) {
 
-    brewery.belongsTo(models.country, {
-      as: "country",
+    Brewery.belongsTo(models.Country, {
       foreignKey: {
-        name: "id",
+        name: "country_id",
         allowNull: true
       }
     });
-}
+    };
+return Brewery;
+  };

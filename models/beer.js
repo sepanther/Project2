@@ -1,6 +1,6 @@
 module.exports = function(sequelize, DataTypes) {
-  const Beer = sequelize.define("beer", {
-    beer_name: {
+  const Beer = sequelize.define("Beer", {
+    name: {
       type: DataTypes.STRING,
       allowNull: false
     },
@@ -16,49 +16,39 @@ module.exports = function(sequelize, DataTypes) {
         allowNull: true
       }
   });
-  return beer;
-};
+  
+
 
 Beer.associate = function(models) {
 
-  Beer.belongsTo(models.type, {
-    as: "type",
-    foreignKey: {
-      name: "type_id",
-      allowNull: true
-    }
-  });
-
-  Beer.belongsTo(models.brewery, {
-    as: "name",
+  Beer.belongsTo(models.Brewery, {
     foreignKey: {
       name: "brewery_id",
       allowNull: true
     }
   });
 
-  Beer.belongsTo(models.profile, {
-    as: "profile",
+  Beer.belongsTo(models.Profile, {
     foreignKey: {
       name: "profile_id",
       allowNull: true
     }
   });
 
-  Beer.belongsTo(models.type, {
-    as: "type",
+  Beer.belongsTo(models.Type, {
     foreignKey: {
       name: "type_id",
       allowNull: true
     }
   });
 
-  Beer.belongsTo(models.style, {
-    as: "style",
+  Beer.belongsTo(models.Style, {
     foreignKey: {
       name: "style_id",
       allowNull: true
     }
   });
 
+};
+return Beer;
 };
